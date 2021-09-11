@@ -12,6 +12,12 @@ def index():
         try:
             db.session.add(a)
             db.session.commit()
-        except Exception as e:
+            return render_template('index.html', url=f'127.0.0.1:5000/url/{alias}')
+        except BaseException as e:
             return render_template('index.html')
     return render_template('index.html')
+
+@main.route('/url/<string:alias>')
+def url(alias):
+    url = Alias.query.filter_by(alias=alias).first().url
+    return redirect(url)

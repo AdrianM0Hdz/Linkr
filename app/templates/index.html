@@ -15,6 +15,6 @@
     <input type="text" placeholder="alias (max 20 chars)" id="alias" name="alias" required><br>
     <input type="submit" id="submit" value="SUBMIT">
 </form>
-<h2>{{ url }}</h2>
-<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+<h2>{% if url %}Shortened URL: {% else %} {% endif %}{{ url }}</h2>
+<script type="module"   src="{{ url_for('static', filename='js/main.js') }}"></script>
 {% endblock %}
